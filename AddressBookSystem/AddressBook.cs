@@ -116,5 +116,17 @@ namespace AddressBookSystem
             }
         }
 
+        // UC4 - Delete Contact of a person
+        public void DeleteContact(string fName, string lName)
+        {
+            for (int i = 0; i < contactList.Count; i++)
+            {
+                if (contactList[i].firstName == fName && contactList[i].lastName == lName)
+                {
+                    Console.WriteLine("Contact {0} {1} Deleted Successfully from Address Book.", contactList[i].firstName,contactList[i].lastName);
+                    contactList.RemoveAt(i);
+                }
+            }
+        }
     }
 }
