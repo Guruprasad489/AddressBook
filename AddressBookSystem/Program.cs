@@ -10,8 +10,12 @@ namespace AddressBookSystem
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Address Book Program");
+            Console.WriteLine("Welcome to Address Book Program\n");
 
+            AddressBook addressBook = new AddressBook();
+            
+            addressBook.AddContact("Guruprasad", "Kumbar", "Kothali", "Chikodi", "Karnataka", 591287, 9113544214, "guruprasadk.dev@gmail.com");
+            addressBook.ViewContact();
             Console.ReadLine();
         }
     }
