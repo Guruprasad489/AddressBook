@@ -19,7 +19,7 @@ namespace AddressBookSystem
             while (true)
             {
                 Console.WriteLine("Please choose an option from the below list");
-                Console.WriteLine("\n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View AddressBook \n8. Exit\n");
+                Console.WriteLine("\n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View AddressBook \n8. View By AddressBook Name \n9. Exit\n");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -57,6 +57,11 @@ namespace AddressBookSystem
                         addressBook.ViewAddressBooks();
                         break;
                     case 8:
+                        Console.WriteLine("Enter the AddressBook Name to View: ");
+                        string bookName = Console.ReadLine();
+                        addressBook.ViewAddressBooks(bookName);
+                        break;
+                    case 9:
                         Environment.Exit(0);
                         break;
                     default:

@@ -159,6 +159,7 @@ namespace AddressBookSystem
             {
                 AddressBook addressBook = new AddressBook();
                 addressBookDict.Add(newAddressBook, addressBook);
+                contactList = new List<Contact>();
                 Console.WriteLine("AddressBook {0} Created Successfully.",newAddressBook);
             }
         }
@@ -169,6 +170,18 @@ namespace AddressBookSystem
                 Console.WriteLine(book.Key); 
             }
             
+        }
+        public void ViewAddressBooks(string bookName)
+        {
+            foreach (var book in addressBookDict)
+            {
+                if (book.Key == bookName)
+                {
+                    Console.WriteLine(book.Key);
+
+                }
+            }
+
         }
 
     }
