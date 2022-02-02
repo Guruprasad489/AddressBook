@@ -19,28 +19,33 @@ namespace AddressBookSystem
             while (true)
             {
                 Console.WriteLine("Please choose an option from the below list");
-                Console.WriteLine("\n1. Add New Contact \n2. View Contacts \n3. View Contact by Person \n4. Edit Contact \n5. Delete Contact \n6. Exit\n");
+                Console.WriteLine("\n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View AddressBook \n8. Exit\n");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
                     case 1:
-                        addressBook.AddNewContact();
+                        Console.WriteLine("Enter New Address Book Name to create: ");
+                        string newAddressBook = Console.ReadLine();
+                        addressBook.AddAddressBook(newAddressBook);
                         break;
                     case 2:
-                        addressBook.ViewContact();
+                        addressBook.AddNewContact();
                         break;
                     case 3:
+                        addressBook.ViewContact();
+                        break;
+                    case 4:
                         Console.WriteLine("Enter the First Name to View Contact Details: ");
                         string f_Name = Console.ReadLine();
                         addressBook.ViewContact(f_Name);
                         break;
-                    case 4:
+                    case 5:
                         Console.WriteLine("Enter the First Name to Edit Contact Details: ");
                         string input = Console.ReadLine();
                         addressBook.EditContact(input);
                         addressBook.ViewContact();
                         break;
-                    case 5:
+                    case 6:
                         Console.WriteLine("Enter the First Name of Contact: ");
                         string fName = Console.ReadLine();
                         Console.WriteLine("Enter the Last Name to Delete Contact: ");
@@ -48,7 +53,10 @@ namespace AddressBookSystem
                         addressBook.DeleteContact(fName, lName);
                         addressBook.ViewContact();
                         break;
-                    case 6:
+                    case 7:
+                        addressBook.ViewAddressBooks();
+                        break;
+                    case 8:
                         Environment.Exit(0);
                         break;
                     default:

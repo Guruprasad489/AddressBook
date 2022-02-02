@@ -9,9 +9,11 @@ namespace AddressBookSystem
     internal class AddressBook : IContact
     {
         List<Contact> contactList;
+        Dictionary<string, AddressBook> addressBookDict;
         public AddressBook()
         {
             contactList = new List<Contact>();
+            addressBookDict = new Dictionary<string, AddressBook>();
         }
 
         // UC1 - Create Contacts in address book
@@ -144,6 +146,29 @@ namespace AddressBookSystem
                     contactList.RemoveAt(i);
                 }
             }
+        }
+
+        public void AddAddressBook(string newAddressBook)
+        {
+            //var book = addressBookDict;
+            if (addressBookDict.ContainsKey(newAddressBook))
+            {
+                Console.WriteLine("Address Book Name Already Exists");
+            }
+            else
+            {
+                AddressBook addressBook = new AddressBook();
+                addressBookDict.Add(newAddressBook, addressBook);
+                Console.WriteLine("AddressBook {0} Created Successfully.",newAddressBook);
+            }
+        }
+        public void ViewAddressBooks()
+        {
+            foreach (var book in addressBookDict)
+            {
+                Console.WriteLine(book.Key); 
+            }
+            
         }
 
     }
