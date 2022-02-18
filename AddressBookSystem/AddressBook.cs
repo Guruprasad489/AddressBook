@@ -195,11 +195,12 @@ namespace AddressBookSystem
             return null;
         }
 
+        //UC8 - Search Person By City Or State
         public void SearchPersonByCityOrState(string userData)
         {
+            int x = 0;
             foreach (var book in addressBookDict)
             {
-                int x = 0;
                 for (int i = 0; i < book.Value.contactList.Count ; i++)
                 {
                     if (book.Value.contactList[i].city.Equals(userData) || book.Value.contactList[i].state.Equals(userData))
@@ -208,9 +209,9 @@ namespace AddressBookSystem
                         x++;
                     }
                 }
-                if(x==0)
-                    Console.WriteLine("No person found for this city or state");
             }
-        }  
+            if (x == 0)
+                Console.WriteLine("No person found for this city or state");
+        }
     }
 }
