@@ -193,7 +193,24 @@ namespace AddressBookSystem
                 }
             }
             return null;
-            
         }
+
+        public void SearchPersonByCity(string city)
+        {
+            foreach (var book in addressBookDict)
+            {
+                int x = 0;
+                for (int i = 0; i < book.Value.contactList.Count ; i++)
+                {
+                    if (book.Value.contactList[i].city.Equals(city))
+                    {
+                        Console.WriteLine(book.Value.contactList[i].ToString());
+                        x++;
+                    }
+                }
+                if(x==0)
+                    Console.WriteLine("No person found for this city");
+            }
+        }  
     }
 }
