@@ -22,7 +22,7 @@ namespace AddressBookSystem
             while (true)
             {
                 Console.WriteLine("Please choose an option from the below list");
-                Console.WriteLine("\n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View all AddressBooks \n8. Switch AddressBook \n9. Search Person By City or State \n10.View Person By City or State \n11.Exit\n");
+                Console.WriteLine("\n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View all AddressBooks \n8. Switch AddressBook \n9. Search Person By City or State \n10.View Person By City or State \n11. Number of Persons By city or state \n12.Exit\n");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -85,6 +85,11 @@ namespace AddressBookSystem
                         addressBook.SearchPersonByCityOrState(cityOrState);
                         break;
                     case 11:
+                        Console.WriteLine("Enter the city or state to View Number of persons by city or state across addressbook: ");
+                        string data = Console.ReadLine();
+                        addressBook.SearchPersonByCityOrState(data);
+                        break;
+                    case 12:
                         Environment.Exit(0);
                         break;
                     default:

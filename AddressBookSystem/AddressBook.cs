@@ -210,6 +210,7 @@ namespace AddressBookSystem
                     }
                 }
             }
+            Console.WriteLine($"\nNumber of Persons for {userData} are : {x}");
             if (x == 0)
                 Console.WriteLine("No person found for this city or state");
         }
