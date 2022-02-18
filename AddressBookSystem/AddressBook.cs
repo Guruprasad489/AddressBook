@@ -23,7 +23,6 @@ namespace AddressBookSystem
             addressBookDict[bookName].contactList.Add(personDetails);
         }
 
-
         //UC2 - Add New Contact Details
         public void AddNewContact(string bookName)
         {
@@ -43,13 +42,23 @@ namespace AddressBookSystem
             long phoneNumber = Convert.ToInt64(Console.ReadLine());
             Console.WriteLine("Enter your EmailID: ");
             string email = Console.ReadLine();
-            
-            AddContactDetails(firstName, lastName, address, city, state, zipcode, phoneNumber, email, bookName);
-            ViewContacts(bookName);
+
+            int x = 0;
+            for (int i = 0; i < addressBookDict[bookName].contactList.Count; i++)
+            {
+                if (addressBookDict[bookName].contactList[i].firstName.Equals(firstName))
+                    x++;
+            }
+            if (x == 0)
+            {
+                AddContactDetails(firstName, lastName, address, city, state, zipcode, phoneNumber, email, bookName);
+                ViewContacts(bookName);
+            }
+            else
+                Console.WriteLine("Duplicate contacts not allowed");
         }
 
-
-       //View contacts of a address book
+        //View contacts of a address book
         public void ViewContacts(string bookName)
         {
             Console.WriteLine($"Current AddressBook: {bookName}");
@@ -58,7 +67,6 @@ namespace AddressBookSystem
                 Console.WriteLine(i+1 + ": " + addressBookDict[bookName].contactList[i].firstName + " " + addressBookDict[bookName].contactList[i].lastName);
             }
         }
-
 
         //View Contact Details of a person
         public void ViewContact(string f_Name, string bookName)
@@ -86,7 +94,6 @@ namespace AddressBookSystem
                 Console.WriteLine("Contact not found");
             }
         }
-
 
         // UC3 - Edit Contact Details
         public void EditContact(string input, string bookName)
@@ -140,7 +147,6 @@ namespace AddressBookSystem
             }
         }
 
-
         // UC4 - Delete Contact of a person
         public void DeleteContact(string fName, string lName, string bookName)
         {
@@ -153,7 +159,6 @@ namespace AddressBookSystem
                 }
             }
         }
-
 
         public void AddAddressBook(string newAddressBook)
         {
@@ -168,7 +173,6 @@ namespace AddressBookSystem
                 Console.WriteLine("AddressBook {0} Created Successfully.",newAddressBook);
             }
         }
-
 
         public void ViewAddressBooks()
         {
