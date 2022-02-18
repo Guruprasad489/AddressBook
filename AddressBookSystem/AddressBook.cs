@@ -195,21 +195,21 @@ namespace AddressBookSystem
             return null;
         }
 
-        public void SearchPersonByCity(string city)
+        public void SearchPersonByCityOrState(string userData)
         {
             foreach (var book in addressBookDict)
             {
                 int x = 0;
                 for (int i = 0; i < book.Value.contactList.Count ; i++)
                 {
-                    if (book.Value.contactList[i].city.Equals(city))
+                    if (book.Value.contactList[i].city.Equals(userData) || book.Value.contactList[i].state.Equals(userData))
                     {
                         Console.WriteLine(book.Value.contactList[i].ToString());
                         x++;
                     }
                 }
                 if(x==0)
-                    Console.WriteLine("No person found for this city");
+                    Console.WriteLine("No person found for this city or state");
             }
         }  
     }

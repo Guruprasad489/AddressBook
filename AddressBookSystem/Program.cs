@@ -75,9 +75,9 @@ namespace AddressBookSystem
                             Console.WriteLine("AddressBook Not Found");
                         break;
                     case 9:
-                        Console.WriteLine("Enter the city to Search person by city across addressbook: ");
-                        string city = Console.ReadLine();
-                        addressBook.SearchPersonByCity(city);
+                        Console.WriteLine("Enter the city or state to Search person by city or state across addressbook: ");
+                        string userData = Console.ReadLine();
+                        addressBook.SearchPersonByCityOrState(userData);
                         break;
                     case 10:
                         Environment.Exit(0);
