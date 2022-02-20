@@ -23,7 +23,7 @@ namespace AddressBookSystem
             addressBookDict[bookName].contactList.Add(personDetails);
         }
 
-        //UC2 - Add New Contact Details
+        //UC2 - Add New Contact Details, UV7 - Avoid duplicate entry by firstNmae
         public void AddNewContact(string bookName)
         {
             try
@@ -203,16 +203,15 @@ namespace AddressBookSystem
         {
             foreach (var book in addressBookDict)
             {
-                int x = 0;
-                for (int i = 0; i < book.Value.contactList.Count ; i++)
+                var searchResut = book.Value.contactList.FindAll(x => x.city == userData || x.state == userData);
+                if(searchResut.Count != 0)
                 {
-                    if (book.Value.contactList[i].city.Equals(userData) || book.Value.contactList[i].state.Equals(userData))
+                    foreach (var item in searchResut)
                     {
-                        Console.WriteLine(book.Value.contactList[i].ToString());
-                        x++;
+                        Console.WriteLine(item.ToString());
                     }
                 }
-                if(x==0)
+                else
                     Console.WriteLine("No person found for this city or state");
             }
         }  
