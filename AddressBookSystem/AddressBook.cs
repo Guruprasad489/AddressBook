@@ -26,36 +26,40 @@ namespace AddressBookSystem
         //UC2 - Add New Contact Details
         public void AddNewContact(string bookName)
         {
-            Console.WriteLine("Enter your First Name: ");
-            string firstName = Console.ReadLine();
-            Console.WriteLine("Enter your Last Name: ");
-            string lastName = Console.ReadLine();
-            Console.WriteLine("Enter your Address: ");
-            string address = Console.ReadLine();
-            Console.WriteLine("Enter your City: ");
-            string city = Console.ReadLine();
-            Console.WriteLine("Enter your State: ");
-            string state = Console.ReadLine();
-            Console.WriteLine("Enter your Zipcode: ");
-            int zipcode = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter your Phone Number: ");
-            long phoneNumber = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter your EmailID: ");
-            string email = Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Enter your First Name: ");
+                string firstName = Console.ReadLine();
+                Console.WriteLine("Enter your Last Name: ");
+                string lastName = Console.ReadLine();
+                Console.WriteLine("Enter your Address: ");
+                string address = Console.ReadLine();
+                Console.WriteLine("Enter your City: ");
+                string city = Console.ReadLine();
+                Console.WriteLine("Enter your State: ");
+                string state = Console.ReadLine();
+                Console.WriteLine("Enter your Zipcode: ");
+                int zipcode = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Enter your Phone Number: ");
+                long phoneNumber = Convert.ToInt64(Console.ReadLine());
+                Console.WriteLine("Enter your EmailID: ");
+                string email = Console.ReadLine();
 
-            int x = 0;
-            for (int i = 0; i < addressBookDict[bookName].contactList.Count; i++)
-            {
-                if (addressBookDict[bookName].contactList[i].firstName.Equals(firstName))
-                    x++;
+                var res = addressBookDict[bookName].contactList.Find(p => p.firstName.Equals(firstName));
+                if (res != null)
+                {
+                    Console.WriteLine("Duplicate contacts not allowed");
+                }
+                else
+                {
+                    AddContactDetails(firstName, lastName, address, city, state, zipcode, phoneNumber, email, bookName);
+                    ViewContacts(bookName);
+                }
             }
-            if (x == 0)
+            catch (Exception ex)
             {
-                AddContactDetails(firstName, lastName, address, city, state, zipcode, phoneNumber, email, bookName);
-                ViewContacts(bookName);
+                Console.WriteLine(ex.Message);
             }
-            else
-                Console.WriteLine("Duplicate contacts not allowed");
         }
 
         //View contacts of a address book
