@@ -300,5 +300,14 @@ namespace AddressBookSystem
                     break;
             }
         }
+
+        //UC11 Sort by person Name
+        public void SortByName(string bookName)
+        {
+            foreach (var person in addressBookDict[bookName].contactList.OrderBy(x => x.firstName))
+            {
+                Console.WriteLine(person.ToString());
+            }
+        }
     }
 }

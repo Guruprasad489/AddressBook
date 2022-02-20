@@ -18,7 +18,7 @@ namespace AddressBookSystem
             addressBook.AddAddressBook("Default");
             addressBook.AddContactDetails("Guruprasad", "Kumbar", "Kothali", "Chikodi", "Karnataka", 591287, 9113544214, "guruprasadk.dev@gmail.com", "Default");
             addressBook.AddContactDetails("Guru", "K", "Marathahalli", "Bangalore", "Karnataka", 560037, 9113544214, "guru@gmail.com", "Default");
-            addressBook.AddContactDetails("G", "K", "M", "Mumbai", "Maharastra", 560037, 9113544214, "guru@gmail.com", "Default");
+            addressBook.AddContactDetails("A", "K", "M", "Mumbai", "Maharastra", 560037, 9113544214, "guru@gmail.com", "Default");
 
             while (true)
             {
@@ -26,7 +26,7 @@ namespace AddressBookSystem
                 {
                     Console.WriteLine("Please choose an option from the below list");
                     Console.WriteLine("\n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View all AddressBooks \n8. Switch AddressBook " +
-                                      "\n9. Search Person By City or State \n10. View Person By City or State \n11. Number of person by city or state \n12. Exit\n");
+                                      "\n9. Search Person By City or State \n10. View Person By City or State \n11. Number of person by city or state \n12. Sort by Person Name \n13. Exit\n");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -92,6 +92,10 @@ namespace AddressBookSystem
                             addressBook.CountPersonByCityOrState();
                             break;
                         case 12:
+                            Console.WriteLine("\nSort by person Name:");
+                            addressBook.SortByName(bookName);
+                            break;
+                        case 13:
                             Environment.Exit(0);
                             break;
                         default:
