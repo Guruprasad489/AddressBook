@@ -302,12 +302,42 @@ namespace AddressBookSystem
         }
 
         //UC11 Sort by person Name
-        public void SortByName(string bookName)
+        public void SortBy(string bookName)
         {
-            foreach (var person in addressBookDict[bookName].contactList.OrderBy(x => x.firstName))
+            Console.WriteLine("\nChoose an option \n1. Order by FirstName \n2. Order by city \n3. Order by state \n4. Order by Zip");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
             {
-                Console.WriteLine(person.ToString());
+                case 1:
+                    foreach (var person in addressBookDict[bookName].contactList.OrderBy(x => x.firstName))
+                    {
+                        Console.WriteLine(person.ToString());
+                    }
+                    break;
+                case 2:
+                    foreach (var person in addressBookDict[bookName].contactList.OrderBy(x => x.city))
+                    {
+                        Console.WriteLine(person.ToString());
+                    }
+                    break;
+                case 3:
+                    foreach (var person in addressBookDict[bookName].contactList.OrderBy(x => x.state))
+                    {
+                        Console.WriteLine(person.ToString());
+                    }
+                    break;
+                case 4:
+                    foreach (var person in addressBookDict[bookName].contactList.OrderBy(x => x.zipcode))
+                    {
+                        Console.WriteLine(person.ToString());
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid Entry");
+                    SortBy(bookName);
+                    break;
             }
+            
         }
     }
 }
