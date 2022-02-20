@@ -10,10 +10,14 @@ namespace AddressBookSystem
     {
         List<Contact> contactList;
         Dictionary<string, AddressBook> addressBookDict;
+        Dictionary<string, List<Contact>> city_Person;
+        Dictionary<string, List<Contact>> state_Person;
         public AddressBook()
         {
             contactList = new List<Contact>();
             addressBookDict = new Dictionary<string, AddressBook>();
+            city_Person = new Dictionary<string, List<Contact>>();
+            state_Person = new Dictionary<string, List<Contact>>();
         }
 
         // UC1 - Create Contacts in address book
@@ -204,16 +208,65 @@ namespace AddressBookSystem
         {
             foreach (var book in addressBookDict)
             {
-                var searchResut = book.Value.contactList.FindAll(x => x.city == userData || x.state == userData);
-                if(searchResut.Count != 0)
+                var searchResult = book.Value.contactList.FindAll(x => x.city == userData || x.state == userData);
+                if(searchResult.Count != 0)
                 {
-                    foreach (var item in searchResut)
+                    foreach (var item in searchResult)
                     {
                         Console.WriteLine(item.ToString());
                     }
                 }
                 else
                     Console.WriteLine("No person found for this city or state");
+            }
+        }
+
+        //UC9 View Person By City Or State 
+        public void ViewPersonByCityOrState()
+        {
+            Console.WriteLine("Choose an option \n1. View Person by city \n2. View Person by state");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Enter the city");
+                    string city = Console.ReadLine();
+                    foreach (var book in addressBookDict)
+                    {
+                        var cityResult = book.Value.contactList.FindAll(x => x.city == city);
+                        if (cityResult.Count != 0)
+                        {
+                            city_Person.Add(city, cityResult);
+                            foreach (var item in city_Person[city])
+                            {
+                                Console.WriteLine(item.ToString());
+                            }
+                        }
+                        else
+                            Console.WriteLine("No person found for this city");
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter the state");
+                    string state = Console.ReadLine();
+                    foreach (var book in addressBookDict)
+                    {
+                        var stateResult = book.Value.contactList.FindAll(x => x.state == state);
+                        if (stateResult.Count != 0)
+                        {
+                            state_Person.Add(state, stateResult);
+                            foreach (var item in state_Person[state])
+                            {
+                                Console.WriteLine(item.ToString());
+                            }
+                        }
+                        else
+                            Console.WriteLine("No person found for this state");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Choose correct option");
+                    break;
             }
         }
     }

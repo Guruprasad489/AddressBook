@@ -18,6 +18,7 @@ namespace AddressBookSystem
             addressBook.AddAddressBook("Default");
             addressBook.AddContactDetails("Guruprasad", "Kumbar", "Kothali", "Chikodi", "Karnataka", 591287, 9113544214, "guruprasadk.dev@gmail.com", "Default");
             addressBook.AddContactDetails("Guru", "K", "Marathahalli", "Bangalore", "Karnataka", 560037, 9113544214, "guru@gmail.com", "Default");
+            addressBook.AddContactDetails("G", "K", "M", "Mumbai", "Maharastra", 560037, 9113544214, "guru@gmail.com", "Default");
 
             while (true)
             {
@@ -82,9 +83,7 @@ namespace AddressBookSystem
                             addressBook.SearchPersonByCityOrState(userData);
                             break;
                         case 10:
-                            Console.WriteLine("Enter the city or state to View person by city or state across addressbook: ");
-                            string cityOrState = Console.ReadLine();
-                            addressBook.SearchPersonByCityOrState(cityOrState);
+                            
                             break;
                         case 11:
                             Console.WriteLine("Enter the city or state to View Number of persons by city or state across addressbook: ");
@@ -100,7 +99,7 @@ namespace AddressBookSystem
                     }
                     Console.ReadLine();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
                 }
