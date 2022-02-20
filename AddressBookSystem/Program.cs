@@ -83,7 +83,8 @@ namespace AddressBookSystem
                             addressBook.SearchPersonByCityOrState(userData);
                             break;
                         case 10:
-                            
+                            Console.WriteLine("View person by city or state across addressbook: ");
+                            addressBook.ViewPersonByCityOrState();
                             break;
                         case 11:
                             Console.WriteLine("Enter the city or state to View Number of persons by city or state across addressbook: ");
