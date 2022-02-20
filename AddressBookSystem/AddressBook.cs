@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -301,7 +302,7 @@ namespace AddressBookSystem
             }
         }
 
-        //UC11 Sort by person Name
+        //UC11, 12 Sort by person Name, city,state and zip
         public void SortBy(string bookName)
         {
             Console.WriteLine("\nChoose an option \n1. Order by FirstName \n2. Order by city \n3. Order by state \n4. Order by Zip");
@@ -338,6 +339,43 @@ namespace AddressBookSystem
                     break;
             }
             
+        }
+
+        //UC13 Write to a file Using File IO
+        public void WriteToFile()
+        {
+            foreach (var item in addressBookDict)
+            {
+                string path = @"C:\Users\Guruprasad\source\repos\AddressBookSystem\AddressBookSystem\FileIO.txt";
+                if (File.Exists(path))
+                {
+                    StreamWriter sw = File.AppendText(path);
+                    sw.WriteLine("AddressBook Name: " + item.Key);
+                    foreach (var person in item.Value.contactList)
+                    {
+                        sw.WriteLine(person.ToString());
+                    }
+                    sw.Close();
+                    Console.WriteLine(File.ReadAllText(path));
+                }
+            }
+        }
+
+        //UC13 Read file using Fie IO
+        public void ReadFile()
+        {
+            string path = @"C:\Users\Guruprasad\source\repos\AddressBookSystem\AddressBookSystem\FileIO.txt";
+            if (File.Exists(path))
+            {
+                //Console.WriteLine(File.ReadAllText(path));
+                StreamReader sr = File.OpenText(path);
+                string line = "";
+                while ((line =sr.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+                sr.Close();
+            }
         }
     }
 }
