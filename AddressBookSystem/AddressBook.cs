@@ -269,5 +269,36 @@ namespace AddressBookSystem
                     break;
             }
         }
+
+        //UC10 Number of Persons count By City Or State 
+        public void CountPersonByCityOrState()
+        {
+            Console.WriteLine("Choose an option \n1. Person count by city \n2. Person count by state");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    Console.WriteLine("Enter the city");
+                    string city = Console.ReadLine();
+                    foreach (var book in addressBookDict)
+                    {
+                        var cityResult = book.Value.contactList.FindAll(x => x.city == city);
+                        Console.WriteLine($"Person count by city- {city}: "+cityResult.Count);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter the state");
+                    string state = Console.ReadLine();
+                    foreach (var book in addressBookDict)
+                    {
+                        var stateResult = book.Value.contactList.FindAll(x => x.state == state);
+                        Console.WriteLine($"Person count by state- {state}: "+stateResult.Count);
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Choose correct option");
+                    break;
+            }
+        }
     }
 }
