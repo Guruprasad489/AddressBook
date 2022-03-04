@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -16,6 +18,8 @@ namespace AddressBookSystem
         Dictionary<string, AddressBook> addressBookDict;
         Dictionary<string, List<Contact>> city_Person;
         Dictionary<string, List<Contact>> state_Person;
+        public static string connectionstring = "Data Source=GURUPRASAD;Initial Catalog=AddressBook_ServiceDB;Integrated Security=True";
+        SqlConnection connection = null;
         public AddressBook()
         {
             contactList = new List<Contact>();
@@ -437,6 +441,33 @@ namespace AddressBookSystem
             foreach (var item in jsonResult)
             {
                 Console.WriteLine(item.ToString());
+            }
+        }
+
+        //UC 16 - Method to retrieve entries from DB 
+        public void GetEntriesFromDB(string query)
+        {
+            try
+            {
+                DataSet dataSet = new DataSet();
+                using (connection = new SqlConnection(connectionstring))
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    adapter.Fill(dataSet);
+                    foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+                    {
+                        Console.WriteLine(dataRow["FirstName"] + ", " + dataRow["LastName"] + ", " + dataRow["Address"] + ", " + dataRow["City"] + ", " + dataRow["State"] + ", " + dataRow["Zip"] + ", " + dataRow["PhoneNumber"] + ", " + dataRow["Email"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }

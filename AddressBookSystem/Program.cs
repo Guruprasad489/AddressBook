@@ -25,12 +25,15 @@ namespace AddressBookSystem
                 try
                 {
                     Console.WriteLine("Please choose an option from the below list");
-                    Console.WriteLine("\n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View all AddressBooks \n8. Switch AddressBook " +
+                    Console.WriteLine("\n0. Exit \n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View all AddressBooks \n8. Switch AddressBook " +
                                       "\n9. Search Person By City or State \n10. View Person By City or State \n11. Number of person by city or state \n12. Sort entries \n13. write to file \n14. Read from file " +
-                                      "\n15. Write to Csv file \n16. Read from CSV file \n17. Write to Json file \n18. Read from Json File \n19. Exit\n");
+                                      "\n15. Write to Csv file \n16. Read from CSV file \n17. Write to Json file \n18. Read from Json File \n19. Retrieve all entries from DB");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
+                        case 0:
+                            Environment.Exit(0);
+                            break;
                         case 1:
                             Console.WriteLine("Enter Unique Address Book Name to create: ");
                             string newBookName = Console.ReadLine();
@@ -115,7 +118,8 @@ namespace AddressBookSystem
                             addressBook.ReadJsonFile();
                             break;
                         case 19:
-                            Environment.Exit(0);
+                            string query = "select * from AddressBook_Table";
+                            addressBook.GetEntriesFromDB(query);
                             break;
                         default:
                             Console.WriteLine("Please choose the correct option");
