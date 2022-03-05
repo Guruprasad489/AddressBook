@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AddressBookSystem
 {
-    internal class Contact
+    public class Contact
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -16,6 +16,7 @@ namespace AddressBookSystem
         public int zipcode { get; set; }
         public long phoneNumber { get; set; }
         public string email { get; set; }
+        public int id { get; set; }
 
         public Contact(string firstName, string lastName, string address, string city, string state, int zipcode, long phoneNumber, string email)
         {
@@ -28,6 +29,11 @@ namespace AddressBookSystem
             this.phoneNumber = phoneNumber;
             this.email = email;
         }
+
+        public Contact()
+        {
+        }
+
         public override string ToString()
         {
             return $"{firstName} {lastName} {address} {city} {state} {zipcode} {phoneNumber} {email}";
