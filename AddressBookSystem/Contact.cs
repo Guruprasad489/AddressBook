@@ -17,6 +17,7 @@ namespace AddressBookSystem
         public long phoneNumber { get; set; }
         public string email { get; set; }
         public int id { get; set; }
+        public DateTime date_Added { get; set; }
 
         public Contact(string firstName, string lastName, string address, string city, string state, int zipcode, long phoneNumber, string email)
         {

@@ -18,9 +18,9 @@ namespace AddressBookSystem
 
             AddressBook addressBook = new AddressBook();
             addressBook.AddAddressBook("Default");
-            addressBook.AddContactDetails("Guruprasad", "Kumbar", "Kothali", "Chikodi", "Karnataka", 591287, 9113544214, "guruprasadk.dev@gmail.com", "Default");
-            addressBook.AddContactDetails("Guru", "K", "Marathahalli", "Bangalore", "Karnataka", 560037, 9113544214, "guru@gmail.com", "Default");
-            addressBook.AddContactDetails("A", "K", "M", "Mumbai", "Maharastra", 560037, 9113544214, "guru@gmail.com", "Default");
+            //addressBook.AddContactDetails("Guruprasad", "Kumbar", "Kothali", "Chikodi", "Karnataka", 591287, 9113544214, "guruprasadk.dev@gmail.com", "Default");
+            //addressBook.AddContactDetails("Guru", "K", "Marathahalli", "Bangalore", "Karnataka", 560037, 9113544214, "guru@gmail.com", "Default");
+            //addressBook.AddContactDetails("A", "K", "M", "Mumbai", "Maharastra", 560037, 9113544214, "guru@gmail.com", "Default");
 
             while (true)
             {
@@ -30,7 +30,7 @@ namespace AddressBookSystem
                     Console.WriteLine("\n0. Exit \n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View all AddressBooks \n8. Switch AddressBook " +
                                       "\n9. Search Person By City or State \n10. View Person By City or State \n11. Number of person by city or state \n12. Sort entries \n13. write to file \n14. Read from file " +
                                       "\n15. Write to Csv file \n16. Read from CSV file \n17. Write to Json file \n18. Read from Json File \n19. Retrieve all entries from DB \n20. Update contact in DB \n21. Retrieve contacts added in particular period" +
-                                      "\n22.Retrieve contacts count by city or state");
+                                      "\n22. Retrieve contacts count by city or state");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
