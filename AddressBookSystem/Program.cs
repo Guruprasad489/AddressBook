@@ -27,7 +27,7 @@ namespace AddressBookSystem
                     Console.WriteLine("Please choose an option from the below list");
                     Console.WriteLine("\n0. Exit \n1. Add New Address Book \n2. Add New Contact \n3. View Contacts \n4. View Contact by Person \n5. Edit Contact \n6. Delete Contact \n7. View all AddressBooks \n8. Switch AddressBook " +
                                       "\n9. Search Person By City or State \n10. View Person By City or State \n11. Number of person by city or state \n12. Sort entries \n13. write to file \n14. Read from file " +
-                                      "\n15. Write to Csv file \n16. Read from CSV file \n17. Write to Json file \n18. Read from Json File \n19. Retrieve all entries from DB \n20. Update contact in DB");
+                                      "\n15. Write to Csv file \n16. Read from CSV file \n17. Write to Json file \n18. Read from Json File \n19. Retrieve all entries from DB \n20. Update contact in DB \n21. Retrieve contacts added in particular period");
                     int option = Convert.ToInt32(Console.ReadLine());
                     switch (option)
                     {
@@ -118,8 +118,8 @@ namespace AddressBookSystem
                             addressBook.ReadJsonFile();
                             break;
                         case 19:
-                            string query = "select * from AddressBook_Table";
-                            addressBook.GetEntriesFromDB(query);
+                            string query1 = "select * from AddressBook_Table";
+                            addressBook.GetEntriesFromDB(query1);
                             break;
                         case 20:
                             Contact contact = new Contact();
@@ -132,6 +132,10 @@ namespace AddressBookSystem
                             Console.WriteLine("Enter new ZipCode");
                             contact.zipcode = Convert.ToInt32(Console.ReadLine());
                             addressBook.UpdateContactInDB(contact);
+                            break;
+                        case 21:
+                            string query2 = "select * from AddressBook_Table where Date_Added between cast('2020-02-03' as date) and getdate()";
+                            addressBook.GetEntriesFromDB(query2);
                             break;
                         default:
                             Console.WriteLine("Please choose the correct option");
